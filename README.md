@@ -10,7 +10,7 @@ sudo make install
 ```
 
 
-#Uninstall
+# Uninstall
 
 ```
 cd smat
