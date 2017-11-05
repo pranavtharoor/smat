@@ -11,7 +11,8 @@ class sparse
         void create(sparse*);
         void display(sparse*);
         void add(sparse*,sparse*);
-        void mult(sparse*,sparse*,sparse*);
+        void spmult(sparse*,sparse*,sparse*);
+        bool isSparse(sparse*);
 };
 //  Function to display a sparse matrix in triplet form(Row,column,value)
 void sparse::display(sparse *a)
@@ -29,7 +30,7 @@ void sparse::display(sparse *a)
 }
 
 //  Function to multiply 2 sparse matrices.
-void sparse ::mult(sparse *a,sparse *b,sparse *c)
+void sparse ::spmult(sparse *a,sparse *b,sparse *c)
 {  
     int m,k = 1,s;
     if(a[0].col != b[0].row)
@@ -116,6 +117,11 @@ void sparse::add(sparse a[],sparse b[])
 
 }
 
+// Function to check if a matrix is sparse or not
+bool sparse::isSparse(sparse a[]) {
+    return (a[0].row * a[0].col + 1) / 2 > a[0].value;
+}
+
 //  Main function
 int main()
 { 
@@ -128,9 +134,11 @@ int main()
     t.create(b);
     cout<<"Entered matrix in Row,Col,value triplet form:\n";
     t.display(b);
-    t.mult(a,b,c);
-    cout<<"The product of the two matrices:\n ";
-    t.display(c);
+    if(t.isSparse(a) && t.isSparse(b)) {
+        t.spmult(a,b,c);
+        cout<<"The product of the two matrices:\n ";
+        t.display(c);
+    } else cout << "Both matrices are not sparse";
     return 0;
 }
 
