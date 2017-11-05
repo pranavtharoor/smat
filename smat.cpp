@@ -21,7 +21,6 @@ void sparse::display(sparse *a)
         cout<<"Matrix is empty\n";
         return ;
     }
-   // cout<<"matrix is as follow"<<endl;
     cout<<"\nR C V"<<endl;
     for(int i = 1;i <= a[0].value;i++)
     { 
@@ -73,10 +72,10 @@ void sparse ::mult(sparse *a,sparse *b,sparse *c)
 //  Function to read input for a matrix.
 void sparse ::create(sparse *a)
 {  
-    cout<<"Number of rows and columns in matrix:\n"<<endl;
+    cout<<"Number of rows and columns in matrix:\n";
     int m,n,l,k = 1,p,q;
     cin>>m>>n;
-    cout<<"Enter all elements in the appropriate order:\n"<<endl;
+    cout<<"Enter all elements in the appropriate order:\n";
     for(int i = 0;i < n;i++)
     { 
         for(int j = 0;j < m;j++)
@@ -130,7 +129,7 @@ int main()
     cout<<"Entered matrix in Row,Col,value triplet form:\n";
     t.display(b);
     t.mult(a,b,c);
-    cout<<"The product of the two matrices:\n "<<endl;
+    cout<<"The product of the two matrices:\n ";
     t.display(c);
     return 0;
 }
